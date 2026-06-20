@@ -19,7 +19,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Storage
-        uses: azure/CLI@v1
+        uses: azure/CLI@v2
         with:
           inlineScript: |
             az storage blob upload \
@@ -27,4 +27,5 @@ jobs:
               --container-name '$web' \
               --file index.html \
               --name index.html \
+              --overwrite true \
               --auth-mode login
